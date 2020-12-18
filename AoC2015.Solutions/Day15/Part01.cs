@@ -10,7 +10,7 @@
         {
             Ingredient[] ingredients = input.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).Select(x => new Ingredient(x)).ToArray();
 
-            return BuildQuantityCombinations(ingredients.Length).Max(combination => ScoreCombination(combination, ingredients)).ToString();
+            return BuildQuantityCombinations().Max(combination => ScoreCombination(combination, ingredients)).ToString();
         }
 
         private static long ScoreCombination(int[] combination, Ingredient[] ingredients)
@@ -34,7 +34,7 @@
                 Math.Max(0, combinedTexture);
         }
 
-        private static IEnumerable<int[]> BuildQuantityCombinations(int ingredientCount)
+        private static IEnumerable<int[]> BuildQuantityCombinations()
         {
             // Cheat: we know there are 4 ingredients...
             for (int i0 = 0; i0 <= 100; i0++)
